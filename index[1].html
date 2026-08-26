@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Beshoy Habib — Controls, Automation & Embedded Systems Engineer portfolio." />
+  <meta name="theme-color" content="#101418" />
+  <title>Beshoy Habib | Controls, Automation & Embedded Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f4f1e9;
+      --panel:#fffdf8;
+      --ink:#101418;
+      --muted:#5b6470;
+      --line:#d8d2c6;
+      --accent:#ff6b35;
+      --accent2:#2c6eeb;
+      --dark:#11161b;
+      --shadow:0 18px 50px rgba(18,23,28,.10);
+      --radius:26px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    .mono{font-family:"IBM Plex Mono",monospace}
+    .wrap{width:min(1180px,calc(100% - 36px));margin:auto}
+
+    .nav{position:sticky;top:0;z-index:20;background:rgba(244,241,233,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(16,20,24,.08)}
+    .nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-weight:800;letter-spacing:-.03em;font-size:1.18rem}
+    .brand span{color:var(--accent)}
+    .nav-links{display:flex;gap:8px;align-items:center}
+    .nav-links a{font-size:.9rem;padding:10px 13px;border-radius:999px;color:#38414a}
+    .nav-links a:hover{background:#fff}
+    .nav-cta{border:1px solid #1b232b!important;color:#111!important;background:#fff}
+
+    .hero{padding:58px 0 28px}
+    .hero-card{position:relative;overflow:hidden;display:grid;grid-template-columns:1.05fr .95fr;gap:0;background:var(--panel);border:1px solid var(--line);border-radius:32px;box-shadow:var(--shadow);min-height:600px}
+    .hero-copy{padding:68px 60px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;min-width:0}
+    .kicker{display:inline-flex;width:fit-content;max-width:100%;align-items:flex-start;gap:9px;border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:.78rem;background:#fff;margin-bottom:18px;flex-wrap:nowrap;white-space:normal}
+    .kicker-text{display:block;min-width:0;line-height:1.45}
+    .kicker .dot{flex:0 0 auto;margin-top:.28em}
+    .dot{width:8px;height:8px;border-radius:50%;background:#25a55f;box-shadow:0 0 0 4px rgba(37,165,95,.12)}
+    h1{font-size:clamp(3.6rem,7vw,6.7rem);line-height:.90;letter-spacing:-.065em;margin:0 0 24px;font-weight:800}
+    .hero-role{font-size:clamp(1.15rem,2vw,1.55rem);max-width:720px;color:#2f3943;margin:0 0 16px;font-weight:600}
+    .hero-sub{font-size:1rem;color:var(--muted);max-width:660px;margin:0 0 28px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:13px 18px;font-weight:700;font-size:.92rem;border:1px solid var(--ink);transition:.2s ease}
+    .btn.primary{background:var(--ink);color:white}
+    .btn.primary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.18)}
+    .btn.secondary{background:transparent}
+    .btn.secondary:hover{background:#fff}
+    .mini-contact{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px;font-size:.82rem;color:#49535d}
+    .mini-contact a{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 11px}
+
+    .hero-visual{position:relative;min-height:600px;overflow:hidden;background:var(--panel);min-width:0}
+    .hero-photo{position:absolute;inset:52px;border-radius:28px;overflow:hidden;box-shadow:0 12px 28px rgba(0,0,0,.10)}
+    .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.28), rgba(0,0,0,.05) 35%, rgba(0,0,0,0));pointer-events:none}
+    .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block}
+    .visual-tag{position:absolute;color:#fff;border:1px solid rgba(255,255,255,.28);background:rgba(17,22,27,.65);padding:9px 12px;border-radius:999px;font-size:.75rem;backdrop-filter:blur(6px);z-index:2}
+    .vt1{left:54px;top:46px}.vt2{right:54px;bottom:46px}
+
+    section{padding:74px 0}
+    .section-head{display:grid;grid-template-columns:180px 1fr;gap:26px;align-items:start;margin-bottom:32px}
+    .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:#66707b;padding-top:7px}
+    .section-title{font-size:clamp(2.25rem,5vw,4.7rem);line-height:.95;letter-spacing:-.055em;margin:0;font-weight:800;max-width:870px}
+
+    .about-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:20px}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+    .about-copy p{font-size:1.13rem;margin:0;color:#333d46}
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .fact{padding:16px;border:1px solid var(--line);border-radius:18px;background:#fff}
+    .fact strong{font-size:1.4rem;display:block;letter-spacing:-.04em}
+    .fact span{font-size:.79rem;color:var(--muted)}
+
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .project{padding:0;overflow:hidden;min-height:0;display:flex;flex-direction:column}
+    .project-number{font-family:"IBM Plex Mono",monospace;font-size:.8rem;font-weight:600;letter-spacing:.08em;color:#66707b;margin-bottom:14px}
+    .project-body{padding:28px;display:flex;flex-direction:column;flex:1}
+    .project h3{font-size:1.25rem;margin:0 0 9px;letter-spacing:-.03em}
+    .project p{margin:0;color:var(--muted);font-size:.93rem}
+
+    .project-body ul{margin:12px 0 0;padding-left:19px;color:var(--muted);font-size:.91rem}
+    .project-body li{margin:0 0 8px}
+    .project-body li:last-child{margin-bottom:0}
+    .project.featured-wide{grid-column:1 / -1}
+    .timeline-row ul{margin:12px 0 0;padding-left:20px;color:var(--muted);max-width:860px}
+    .timeline-row li{margin-bottom:8px}
+    .timeline-row li:last-child{margin-bottom:0}
+    .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto;padding-top:20px}
+    .tag{font-family:"IBM Plex Mono",monospace;font-size:.69rem;border:1px solid var(--line);border-radius:999px;padding:6px 9px;background:#fff}
+
+    .timeline{display:grid;gap:12px}
+    .timeline-row{display:grid;grid-template-columns:180px 1fr;gap:20px;border-top:1px solid var(--line);padding:24px 0}
+    .time{font-family:"IBM Plex Mono",monospace;color:#6a737d;font-size:.8rem;padding-top:4px}
+    .timeline-row h3{font-size:1.28rem;margin:0 0 4px;letter-spacing:-.03em}
+    .timeline-row .org{font-style:italic;color:#4e5964;margin-bottom:9px}
+    .timeline-row p{margin:0;color:var(--muted);max-width:800px}
+
+    .skills-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .skill-card h3{margin:0 0 14px;font-size:1.03rem}
+    .skill-list{display:flex;flex-wrap:wrap;gap:8px}
+    .skill-list span{font-family:"IBM Plex Mono",monospace;background:#fff;border:1px solid var(--line);padding:8px 10px;border-radius:10px;font-size:.76rem}
+
+    .contact-card{background:var(--dark);color:#fff;border-radius:32px;padding:56px;position:relative;overflow:hidden}
+    .contact-card::after{content:"";position:absolute;width:390px;height:390px;border-radius:50%;background:var(--accent);right:-170px;top:-170px;opacity:.7}
+    .contact-card h2{font-size:clamp(2.6rem,6vw,5.5rem);line-height:.92;letter-spacing:-.06em;margin:0 0 18px;max-width:850px;position:relative;z-index:2}
+    .contact-card p{max-width:650px;color:#cbd3da;position:relative;z-index:2}
+    .contact-actions{position:relative;z-index:2;margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
+    .contact-actions a{border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:12px 15px;font-size:.9rem}
+    .contact-actions a:first-child{background:#fff;color:#111;border-color:#fff;font-weight:700}
+
+    footer{padding:28px 0 44px;color:#68717a;font-size:.78rem;display:flex;justify-content:space-between;gap:20px}
+    .mobile-menu{display:none}
+
+    @media (max-width:900px){
+      .hero-card{grid-template-columns:1fr}.hero-visual{min-height:430px}.hero-copy{padding:50px 34px}.section-head{grid-template-columns:1fr;gap:8px}.about-grid{grid-template-columns:1fr}.projects{grid-template-columns:1fr}.timeline-row{grid-template-columns:1fr;gap:5px}.skills-wrap{grid-template-columns:1fr}.nav-links a:not(.nav-cta){display:none}.contact-card{padding:42px 28px}.facts{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:560px){
+      .wrap{width:min(100% - 22px,1180px)}.hero{padding-top:20px}.hero-copy{padding:40px 23px}h1{font-size:3.7rem}.hero-role{font-size:1.08rem}.hero-visual{min-height:360px}.hero-photo{inset:24px}.vt1{left:26px;top:26px}.vt2{right:26px;bottom:26px}.schematic{inset:22px}.pcb{width:88%}.facts{grid-template-columns:1fr}.section-title{font-size:2.6rem}.nav-inner{height:62px}.brand{font-size:1.05rem}.nav-cta{padding:8px 11px!important;font-size:.78rem!important}section{padding:55px 0}footer{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">Beshoy<span>.</span></a>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a class="nav-cta" href="resume.html">Download Resume</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div class="hero-card">
+        <div class="hero-copy">
+          <div class="kicker mono"><span class="dot" aria-hidden="true"></span><span class="kicker-text">Open to entry-level engineering roles nationwide • Willing to relocate anywhere in the U.S.</span></div>
+          <h1>Beshoy<br>Habib</h1>
+          <p class="hero-role">Controls, Automation & Embedded Systems Engineer</p>
+          <p class="hero-sub">Seeking an entry-level role in Embedded Systems, Controls, Automation, or Robotics, leveraging hands-on experience with C/C++, microcontrollers, PLC fundamentals, sensors, and hardware-software integration.</p>
+          <div class="actions">
+            <a class="btn primary" href="#projects">View Projects ↓</a>
+            <a class="btn secondary" href="resume.html" target="_blank" rel="noopener">View Resume ↗</a>
+          </div>
+          <div class="mini-contact mono">
+            <a href="mailto:beshoyhabib21@gmail.com">beshoyhabib21@gmail.com</a>
+            <a href="https://www.linkedin.com/in/beshoyhabib21" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="tel:+16266394499">626-639-4499</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Photo of Beshoy Habib">
+          <div class="visual-tag vt1 mono">CONTROLS / AUTOMATION / EMBEDDED</div>
+          <div class="visual-tag vt2 mono">CPP • 2026</div>
+          <div class="hero-photo">
+            <img src="profile.jpg" alt="Beshoy Habib portrait">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">01 / About</div>
+          <h2 class="section-title">I build systems where mechanical hardware, electronics and code meet.</h2>
+        </div>
+        <div class="about-grid">
+          <div class="card about-copy">
+            <p>I earned my B.S. in Electromechanical Systems Engineering Technology from California State Polytechnic University, Pomona. My work spans autonomous robotics, microcontrollers, sensors, CNC equipment, 3D printing, and manufacturing troubleshooting. I enjoy taking a system from an idea to a working, testable machine.</p>
+          </div>
+          <div class="card facts">
+            <div class="fact"><strong>5</strong><span>Featured engineering projects</span></div>
+            <div class="fact"><strong>5</strong><span>Students led on build teams</span></div>
+            <div class="fact"><strong>2026</strong><span>Cal Poly Pomona graduate</span></div>
+            <div class="fact"><strong>ASME</strong><span>National design competition</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">02 / Projects</div>
+          <h2 class="section-title">Hands-on engineering work, not just coursework.</h2>
+        </div>
+        <div class="projects">
+          <article class="card project">
+            <div class="project-body">
+              <div class="project-number">#1</div>
+              <h3>Autonomous Robotic Waste-Sorting System — ASME Student Design Competition <span class="mono" style="font-size:.72rem;color:#6a737d;font-weight:500">(AY 2025–2026)</span></h3>
+              <ul>
+                <li>Represented Cal Poly Pomona at the national ASME Student Design Competition in Florida, designing and building an autonomous robotic waste-sorting system from concept through live demonstration.</li>
+                <li>Designed the mechanical structure and CAD layout, integrating microcontrollers, RGB color sensors, and wireless communication for automated waste classification.</li>
+                <li>Cut sensor calibration and overall system testing time by roughly half by streamlining the testing process, and improved the sorting mechanism's design for more reliable object handling.</li>
+                <li>Integrated mechanical, electrical, and software systems into a single working autonomous prototype, from CAD design through embedded control code.</li>
+                <li>Developed and tested C/C++ control algorithms for sensor interfacing, autonomous navigation, and object detection, demonstrating the full system live at competition.</li>
+              </ul>
+              <div class="tags"><span class="tag">C/C++</span><span class="tag">Microcontrollers</span><span class="tag">RGB Sensors</span><span class="tag">CAD</span><span class="tag">Autonomy</span></div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-body">
+              <div class="project-number">#2</div>
+              <h3>Computer Numerical Control (CNC) Manufacturing <span class="mono" style="font-size:.72rem;color:#6a737d;font-weight:500">(Spring 2024)</span></h3>
+              <ul>
+                <li>Led a team of 5 student engineers in building a CNC machine from scratch, then programmed, set up, and operated it for automated precision manufacturing applications.</li>
+                <li>Performed maintenance, troubleshooting, and setup verification, refining processes to improve part quality and reduce setup time.</li>
+              </ul>
+              <div class="tags"><span class="tag">CNC</span><span class="tag">G-code</span><span class="tag">Manufacturing</span><span class="tag">Troubleshooting</span><span class="tag">Quality</span></div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-body">
+              <div class="project-number">#3</div>
+              <h3>Custom 3D Printer <span class="mono" style="font-size:.72rem;color:#6a737d;font-weight:500">(Fall 2023)</span></h3>
+              <ul>
+                <li>Led a team of 5 student engineers in designing, assembling, and calibrating a 3D printer built entirely from scratch, used to manufacture precision parts for CNC machine assemblies.</li>
+                <li>Tuned printing parameters and closed-loop calibration settings, reducing print defects and improving dimensional accuracy.</li>
+              </ul>
+              <div class="tags"><span class="tag">3D Printing</span><span class="tag">Calibration</span><span class="tag">Mechanical Design</span><span class="tag">Closed Loop</span></div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-body">
+              <div class="project-number">#4</div>
+              <h3>Robotic Vehicle with Automated Gripping Arm <span class="mono" style="font-size:.72rem;color:#6a737d;font-weight:500">(Spring 2022)</span></h3>
+              <ul>
+                <li>Designed and built an Arduino-based robotic vehicle with an automated gripping arm for object handling and transport.</li>
+                <li>Integrated sensors, actuators, and embedded control systems, programming microcontroller-based control algorithms in C/C++.</li>
+                <li>Iterated on the gripping mechanism design to improve grip reliability and object-handling accuracy.</li>
+              </ul>
+              <div class="tags"><span class="tag">Arduino</span><span class="tag">C/C++</span><span class="tag">Sensors</span><span class="tag">Actuators</span><span class="tag">Robotics</span></div>
+            </div>
+          </article>
+
+          <article class="card project featured-wide">
+            <div class="project-body">
+              <div class="project-number">#5</div>
+              <h3>Sun-Following Solar Panel</h3>
+              <p>Designed and built a solar-tracking system that automatically adjusts a panel's position to follow the sun, applying sensing, control, and electromechanical integration to improve solar exposure throughout the day.</p>
+              <div class="tags"><span class="tag">Solar Tracking</span><span class="tag">Sensors</span><span class="tag">Control Systems</span><span class="tag">Automation</span><span class="tag">Electromechanical</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">03 / Experience</div>
+          <h2 class="section-title">Engineering experience built around production, troubleshooting and execution.</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-row">
+            <div class="time">AUG 2023 — JAN 2024</div>
+            <div>
+              <h3>CNC Engineering Intern <span style="font-weight:400;color:#6a737d">|</span> <span class="org" style="display:inline;font-size:1rem">Al Saqr Steel</span></h3>
+              <ul>
+                <li>Programmed, set up, and operated CNC machines for automated precision manufacturing applications.</li>
+                <li>Diagnosed and resolved machine setup and tooling issues, improving part tolerance consistency and reducing defect rates on production runs.</li>
+                <li>Improved production timing and increased manufacturing productivity by optimizing machine setup procedures, reducing equipment downtime by approximately 40–50%.</li>
+                <li>Performed routine maintenance and quality verification checks, helping maintain consistent output quality across manufacturing shifts.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="time">JAN 2023 — JUN 2023</div>
+            <div>
+              <h3>Electronics Supply Technician <span style="font-weight:400;color:#6a737d">|</span> <span class="org" style="display:inline;font-size:1rem">HD Electronics</span></h3>
+              <ul>
+                <li>Managed inventory of 100–300 electronic components, tracking stock levels and reordering to prevent part shortages.</li>
+                <li>Supported several engineers with part selection and sourcing, streamlining procurement for ongoing projects.</li>
+                <li>Organized component inventory system, improving retrieval speed and reducing time spent locating parts.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="time">MAY 2026</div>
+            <div>
+              <h3>B.S. Electromechanical Systems Engineering Technology</h3>
+              <div class="org">California State Polytechnic University, Pomona</div>
+              <p>Relevant study in embedded systems, microcontrollers, control systems, circuit analysis, robotics and automation, mechatronics, power electronics, and electrical machines. Dean’s List — Spring 2025.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">04 / Skills</div>
+          <h2 class="section-title">Tools I use to make machines behave.</h2>
+        </div>
+        <div class="skills-wrap">
+          <div class="card skill-card">
+            <h3>Programming</h3>
+            <div class="skill-list"><span>C/C++</span><span>Embedded C</span><span>Python</span><span>MATLAB</span><span>G-code</span></div>
+          </div>
+          <div class="card skill-card">
+            <h3>Controls & Embedded</h3>
+            <div class="skill-list"><span>Arduino</span><span>Microcontrollers</span><span>PLC Fundamentals</span><span>Sensors</span><span>Actuators</span><span>Control Systems</span><span>System Modeling</span></div>
+          </div>
+          <div class="card skill-card">
+            <h3>Design & Manufacturing</h3>
+            <div class="skill-list"><span>SolidWorks</span><span>AutoCAD</span><span>CNC Machining</span><span>Quality Control</span><span>Hardware-Software Integration</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-card">
+          <h2>Building the next system starts with a conversation.</h2>
+          <p>I’m interested in entry-level Controls, Automation, Embedded Systems, Robotics, and related engineering roles.</p>
+          <div class="contact-actions mono">
+            <a href="mailto:beshoyhabib21@gmail.com">Email me</a>
+            <a href="https://www.linkedin.com/in/beshoyhabib21" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="resume.html">Resume ↓</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span>© <span id="year"></span> Beshoy Habib</span>
+    <span class="mono">Duarte, California</span>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
